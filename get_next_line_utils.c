@@ -6,7 +6,7 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:51:02 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/05 11:37:40 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/05 12:00:28 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (arr);
 }
 
-char	*ft_strndup(const char *s1, size_t len)
+char	*g_strndup(const char *s1, size_t len)
 {
 	size_t	i;
 	char	*arr;
