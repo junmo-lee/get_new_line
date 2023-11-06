@@ -6,13 +6,24 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:51:02 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/06 20:03:26 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/06 22:37:24 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+void	*free_setnull(char **ptr)
+{
+	void	*temp;
+
+	temp = *ptr;
+	if (*ptr != NULL)
+		*ptr = NULL;
+	free(temp);
+	return (NULL);
+}
+
+size_t	gnl_strlen(const char *str)
 {
 	size_t	i;
 
@@ -24,12 +35,12 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	gnl_strlcpy(char *dest, const char *src, size_t size)
 {
 	unsigned int	i;
 	unsigned int	src_size;
 
-	src_size = ft_strlen(src);
+	src_size = gnl_strlen(src);
 	if (size == 0)
 		return (src_size);
 	i = 0;
@@ -42,26 +53,33 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_size);
 }
 
-char	*gnl_append(char const *s1, char const *s2)
+char	*gnl_append(char *s1, char *s2)
 {
 	unsigned int	s1_len;
 	unsigned int	s2_len;
 	char			*arr;
 
-	s2_len = ft_strlen(s2);
+	s2_len = gnl_strlen(s2);
 	if (s1 == NULL)
-		return (g_strndup(s2, s2_len));
-	s1_len = ft_strlen(s1);
+	{
+		free_setnull(&(s1));
+		return (gnl_strndup(s2, s2_len));
+	}
+	s1_len = gnl_strlen(s1);
 	arr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (arr == NULL)
+	{
+		free_setnull(&(s1));
 		return (NULL);
-	ft_strlcpy(arr, s1, s1_len + 1);
-	ft_strlcpy(arr + s1_len, s2, s2_len + 1);
+	}
+	gnl_strlcpy(arr, s1, s1_len + 1);
+	gnl_strlcpy(arr + s1_len, s2, s2_len + 1);
 	arr[s1_len + s2_len] = '\0';
+	free_setnull(&(s1));
 	return (arr);
 }
 
-char	*g_strndup(const char *s1, size_t len)
+char	*gnl_strndup(char *s1, size_t len)
 {
 	size_t	i;
 	char	*arr;
