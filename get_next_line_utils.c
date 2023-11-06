@@ -6,7 +6,7 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:51:02 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/05 12:00:28 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/06 20:03:26 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
+	if (str == NULL)
+		return (-1);
 	i = 0;
 	while (str[i] != '\0')
 		i++;
@@ -40,16 +42,16 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_size);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*gnl_append(char const *s1, char const *s2)
 {
 	unsigned int	s1_len;
 	unsigned int	s2_len;
 	char			*arr;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
+	if (s1 == NULL)
+		return (g_strndup(s2, s2_len));
+	s1_len = ft_strlen(s1);
 	arr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (arr == NULL)
 		return (NULL);
@@ -64,6 +66,8 @@ char	*g_strndup(const char *s1, size_t len)
 	size_t	i;
 	char	*arr;
 
+	if (s1 == NULL || len == 0)
+		return (NULL);
 	arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (arr == NULL)
 		return (NULL);
