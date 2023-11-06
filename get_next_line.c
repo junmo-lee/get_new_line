@@ -6,7 +6,7 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:50:49 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/06 22:37:01 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/06 22:53:03 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	read_line(t_buf *buf, char *buffer, int fd)
 		if (buf->ret_read == 0)
 			return (2);
 		buffer[buf->ret_read] = '\0';
-		buf->data = gnl_append(buf->data, buffer);
+		buf->data = gnl_append(buf->data, buffer, buf);
 		if (buf->data == NULL)
 			return (1);
 	}
