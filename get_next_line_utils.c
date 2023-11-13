@@ -6,7 +6,7 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:51:02 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/06 23:09:13 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/13 19:04:17 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ void	*free_setnull(char **ptr)
 	void	*temp;
 
 	temp = *ptr;
-	if (*ptr != NULL)
-		*ptr = NULL;
+	*ptr = NULL;
 	free(temp);
 	return (NULL);
 }
 
-ssize_t	gnl_strlen(const char *str)
+size_t	gnl_strlen(const char *str)
 {
-	ssize_t	i;
+	size_t	i;
 
 	if (str == NULL)
 		return (-1);
@@ -35,12 +34,12 @@ ssize_t	gnl_strlen(const char *str)
 	return (i);
 }
 
-ssize_t	gnl_strlcpy(char *dest, const char *src, ssize_t size, ssize_t src_size)
+void	gnl_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (size == 0)
-		return (src_size);
+		return ;
 	i = 0;
 	while (*(src + i) != '\0' && (i + 1) < size)
 	{
@@ -48,14 +47,13 @@ ssize_t	gnl_strlcpy(char *dest, const char *src, ssize_t size, ssize_t src_size)
 		i++;
 	}
 	dest[i] = '\0';
-	return (src_size);
 }
 
 char	*gnl_append(char *s1, char *s2, t_buf *buf)
 {
-	unsigned int	s1_len;
-	unsigned int	s2_len;
-	char			*arr;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*arr;
 
 	s2_len = gnl_strlen(s2);
 	if (s1 == NULL)
@@ -70,8 +68,8 @@ char	*gnl_append(char *s1, char *s2, t_buf *buf)
 		free_setnull(&(s1));
 		return (NULL);
 	}
-	gnl_strlcpy(arr, s1, s1_len + 1, s1_len);
-	gnl_strlcpy(arr + s1_len, s2, s2_len + 1, s2_len);
+	gnl_strlcpy(arr, s1, s1_len + 1);
+	gnl_strlcpy(arr + s1_len, s2, s2_len + 1);
 	arr[s1_len + s2_len] = '\0';
 	free_setnull(&(s1));
 	return (arr);

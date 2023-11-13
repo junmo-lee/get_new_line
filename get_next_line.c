@@ -6,7 +6,7 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:50:49 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/06 22:53:03 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/13 19:03:14 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,26 @@
 
 void	update_buf(t_buf *buf)
 {
-	ssize_t	i;
+	size_t	i;
 	int		once;
 
-	buf->n_idx = -1;
+	buf->meet_n = 0;
 	if (buf->data == NULL)
-	{
 		buf->len_data = 0;
-		buf->end_flag = 1;
-	}
 	else
 	{
 		once = 1;
 		i = 0;
 		while (buf->data[i] != '\0')
 		{
-			if (buf->data[i] == '\n' && once)
+			if (buf->data[i] == '\n' && (buf->meet_n == 0))
 			{
 				buf->n_idx = i;
-				once = 0;
+				buf->meet_n = 1;
 			}
 			i++;
 		}
 		buf->len_data = i;
-		buf->end_flag = 0;
 	}
 }
 
@@ -46,7 +42,7 @@ int	read_line(t_buf *buf, char *buffer, int fd)
 	while (1)
 	{
 		update_buf(buf);
-		if (buf->n_idx >= 0)
+		if (buf->meet_n == 1)
 			return (0);
 		buf->ret_read = read(fd, buffer, BUFFER_SIZE);
 		if (buf->ret_read == -1)
@@ -90,7 +86,7 @@ char	*make_ret(t_buf *buf)
 {
 	char	*temp;
 	char	*ret;
-	ssize_t	rest_len;
+	size_t	rest_len;
 
 	ret = NULL;
 	if (buf->end_flag == 1)
