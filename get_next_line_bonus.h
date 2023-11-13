@@ -6,14 +6,14 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:01:15 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/13 19:08:01 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/13 20:21:41 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-// # define BUFFER_SIZE 10
+# define BUFFER_SIZE 10
 
 # include <fcntl.h>
 # include <unistd.h>
