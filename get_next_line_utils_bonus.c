@@ -6,11 +6,11 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:51:02 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/13 19:07:36 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/15 17:02:35 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*free_setnull(char **ptr)
 {

@@ -6,23 +6,21 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:50:49 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/13 19:07:43 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/15 17:03:13 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	update_buf(t_buf *buf)
 {
 	size_t	i;
-	int		once;
 
 	buf->meet_n = 0;
 	if (buf->data == NULL)
 		buf->len_data = 0;
 	else
 	{
-		once = 1;
 		i = 0;
 		while (buf->data[i] != '\0')
 		{
