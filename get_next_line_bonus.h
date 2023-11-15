@@ -6,7 +6,7 @@
 /*   By: junmlee <junmlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:01:15 by junmlee           #+#    #+#             */
-/*   Updated: 2023/11/13 20:21:41 by junmlee          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:19:22 by junmlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define BUFFER_SIZE 10
 
-# include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
